@@ -1,1 +1,1 @@
-document.getElementById("root").innerHTML = "hello container";
+import("./bootstrap");
