@@ -7,4 +7,7 @@ const productNames = Array.from({ length: NUM_PRODUCTS }, () =>
 );
 const products = productNames.map((name) => `<div>${name}</div>`);
 
-document.getElementById("app-products").innerHTML = products.join("");
+document.getElementById("app-products").innerHTML = `<h2>Products</h2>
+
+${products.join("")}
+`;
