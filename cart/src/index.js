@@ -1,4 +1,4 @@
-const CONTAINER_NAME = "remote-products";
+const CONTAINER_NAME = "remote-cart";
 
 import("./bootstrap")
   .then(({ mount }) => {

@@ -1,3 +1,5 @@
-import "products/Products";
+import { mount as mountProducts } from "products/Products";
+import { mount as mountCart } from "cart/Cart";
 
-document.getElementById("app").innerHTML = "hello container";
+mountProducts(document.getElementById("host-products"));
+mountCart(document.getElementById("host-cart"));
