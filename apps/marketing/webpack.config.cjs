@@ -7,6 +7,7 @@ module.exports = {
   mode: "development",
   devServer: {
     port: 8081,
+    historyApiFallback: true,
   },
   module: {
     rules: [
@@ -20,10 +21,14 @@ module.exports = {
           },
         },
       },
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
+      },
     ],
   },
   resolve: {
-    extensions: [".ts", ".tsx", ".js"],
+    extensions: [".ts", ".tsx"],
   },
   output: {
     filename: "main.js",

@@ -1,0 +1,86 @@
+@font-face {
+  font-family: "Roboto";
+  font-weight: 400;
+  src: url("../assets/fonts/Roboto/Roboto-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Roboto";
+  font-weight: 400;
+  font-style: italic;
+  src: url("../assets/fonts/Roboto/Roboto-Italic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Roboto";
+  font-weight: 500;
+  src: url("../assets/fonts/Roboto/Roboto-Medium.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Roboto";
+  font-weight: 500;
+  font-style: italic;
+  src: url("../assets/fonts/Roboto/Roboto-MediumItalic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Roboto";
+  font-weight: 700;
+  src: url("../assets/fonts/Roboto/Roboto-Bold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Roboto";
+  font-weight: 700;
+  font-style: italic;
+  src: url("../assets/fonts/Roboto/Roboto-BoldItalic.woff2") format("woff2");
+}
+
+.marketing {
+  font-family: "Roboto", sans-serif;
+}
+
+.global-header {
+  background: #000;
+  color: #fff;
+  margin: 0;
+  padding: 0 0.8rem;
+}
+
+.global-header__content {
+  align-items: center;
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.brand {
+  font-size: 1.2rem;
+  margin-right: 2rem;
+}
+
+.global-nav__links {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.global-nav__item {
+  padding-right: 1rem;
+}
+
+.global-nav__link {
+  color: #fff;
+}
+
+.global-nav__link:focus {
+  outline: 2px solid #efefef;
+  outline-offset: 2px;
+}
+
+.page-content {
+  margin: 0 auto 5rem;
+  max-width: 1200px;
+}
