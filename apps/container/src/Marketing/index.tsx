@@ -6,18 +6,10 @@
 // of frailty does not seem to be a good idea.
 //
 // @ts-ignore-next-line
-import { mount } from "marketing/Marketing";
-import { useEffect, useRef } from "react";
+import "marketing/Marketing";
 
 const Marketing = () => {
-  console.log("heyy");
-  const rootRef = useRef(null);
-
-  useEffect(() => {
-    mount(rootRef.current);
-  }, [rootRef]);
-
-  return <div ref={rootRef} />;
+  return <marketing-app></marketing-app>;
 };
 
 export default Marketing;

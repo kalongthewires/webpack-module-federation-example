@@ -5,19 +5,37 @@ import App from "./App";
 import Home from "./Home";
 import Pricing from "./Pricing";
 
-export const mount = (el: HTMLElement) => {
-  const root = ReactDOM.createRoot(el);
+// TODO: Need to include CSS in web component
+class MarketingApp extends HTMLElement {
+  shadowRoot: ShadowRoot | null;
 
-  root.render(
-    <React.StrictMode>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<App />}>
-            <Route index element={<Home />} />
-            <Route path="/pricing" element={<Pricing />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </React.StrictMode>
-  );
-};
+  constructor() {
+    super();
+
+    this.shadowRoot = this.attachShadow({ mode: "open" });
+    this.render();
+  }
+
+  render = () => {
+    if (!this.shadowRoot) {
+      return;
+    }
+
+    const root = ReactDOM.createRoot(this.shadowRoot);
+
+    root.render(
+      <React.StrictMode>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<App />}>
+              <Route index element={<Home />} />
+              <Route path="/pricing" element={<Pricing />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </React.StrictMode>
+    );
+  };
+}
+
+customElements.define("marketing-app", MarketingApp);
