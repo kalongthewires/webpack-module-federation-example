@@ -7,7 +7,7 @@ module.exports = {
   entry: "./src/index.tsx",
   mode: "development",
   devServer: {
-    port: 8081,
+    port: 8080,
     historyApiFallback: true,
   },
   module: {
@@ -22,10 +22,6 @@ module.exports = {
           },
         },
       },
-      {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"],
-      },
     ],
   },
   resolve: {
@@ -37,10 +33,9 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "marketing",
-      filename: "remoteEntry.js",
-      exposes: {
-        "./Marketing": "./src/bootstrap.tsx",
+      name: "container",
+      remotes: {
+        marketing: "marketing@http://localhost:8081/remoteEntry.js",
       },
       shared: {
         react: {

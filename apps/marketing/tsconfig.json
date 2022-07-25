@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
     "esModuleInterop": false,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": false,
