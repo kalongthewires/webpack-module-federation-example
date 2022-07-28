@@ -1,8 +1,9 @@
-import "./styles.css";
+import styles from "./styles.css";
 
 const Home = () => {
   return (
     <div>
+      <style>{styles}</style>
       <h2>Home</h2>
 
       <p>
