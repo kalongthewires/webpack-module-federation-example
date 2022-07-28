@@ -1,3 +1,5 @@
+import { CacheProvider } from "@emotion/react";
+import createCache from "@emotion/cache";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -25,14 +27,18 @@ class MarketingApp extends HTMLElement {
 
     root.render(
       <React.StrictMode>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<App />}>
-              <Route index element={<Home />} />
-              <Route path="/pricing" element={<Pricing />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
+        <CacheProvider
+          value={createCache({ key: "app-cache", container: this.shadowRoot })}
+        >
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<App />}>
+                <Route index element={<Home />} />
+                <Route path="/pricing" element={<Pricing />} />
+              </Route>
+            </Routes>
+          </BrowserRouter>
+        </CacheProvider>
       </React.StrictMode>
     );
   };
