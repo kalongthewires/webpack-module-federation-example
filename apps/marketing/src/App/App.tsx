@@ -1,4 +1,4 @@
-import { css, Global } from "@emotion/react";
+import { Global } from "@emotion/react";
 import { Link, Outlet } from "react-router-dom";
 import { fonts } from "../globalStyles";
 import {

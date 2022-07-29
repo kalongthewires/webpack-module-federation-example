@@ -7,7 +7,6 @@ import App from "./App";
 import Home from "./Home";
 import Pricing from "./Pricing";
 
-// TODO: Need to include CSS in web component
 class MarketingApp extends HTMLElement {
   shadowRoot: ShadowRoot | null;
 
@@ -28,7 +27,10 @@ class MarketingApp extends HTMLElement {
     root.render(
       <React.StrictMode>
         <CacheProvider
-          value={createCache({ key: "app-cache", container: this.shadowRoot })}
+          value={createCache({
+            key: "marketing-cache",
+            container: this.shadowRoot,
+          })}
         >
           <BrowserRouter>
             <Routes>

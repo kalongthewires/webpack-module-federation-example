@@ -1,4 +1,4 @@
-import "./styles.css";
+import { gallery, galleryImage } from "./styles";
 
 const Home = () => {
   return (
@@ -11,34 +11,34 @@ const Home = () => {
         don't simply skip over it entirely.
       </p>
 
-      <div className="gallery">
+      <div css={gallery}>
         <img
-          className="gallery__image"
+          css={galleryImage}
           src="http://placekitten.com/410/410"
           alt="Kitten"
         />
         <img
-          className="gallery__image"
+          css={galleryImage}
           src="http://placekitten.com/410/410"
           alt="Kitten"
         />
         <img
-          className="gallery__image"
+          css={galleryImage}
           src="http://placekitten.com/410/410"
           alt="Kitten"
         />
         <img
-          className="gallery__image"
+          css={galleryImage}
           src="http://placekitten.com/410/410"
           alt="Kitten"
         />
         <img
-          className="gallery__image"
+          css={galleryImage}
           src="http://placekitten.com/410/410"
           alt="Kitten"
         />
         <img
-          className="gallery__image"
+          css={galleryImage}
           src="http://placekitten.com/410/410"
           alt="Kitten"
         />

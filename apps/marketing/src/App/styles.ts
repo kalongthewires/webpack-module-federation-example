@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
 
 export const root = css`
-  font-family: "Roboto", sans-serif;
+  font-family: Roboto, sans-serif;
 `;
 
 export const globalHeader = css`
