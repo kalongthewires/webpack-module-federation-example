@@ -1,0 +1,14 @@
+{
+  "name": "dashboard",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {},
+  "dependencies": {
+    "vue": "^3.2.37"
+  },
+  "devDependencies": {
+    "typescript": "^4.6.4",
+    "vue-tsc": "^0.38.4"
+  }
+}
