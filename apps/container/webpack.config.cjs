@@ -1,59 +1,53 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { ModuleFederationPlugin } = require("webpack").container;
-const deps = require("./package.json").dependencies;
+const packageJson = require("./package.json");
 
-module.exports = {
-  entry: "./src/index.tsx",
-  mode: "development",
-  devServer: {
-    port: 8080,
-    historyApiFallback: true,
-  },
-  module: {
-    rules: [
-      {
-        test: /\.tsx?$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "ts-loader",
-          options: {
-            compilerOptions: { noEmit: false },
+const PRODUCTION_URL = process.env.PRODUCTION_URL;
+
+module.exports = (env, argv) => {
+  const isProduction = argv.mode === "production";
+  const baseUrl = isProduction ? PRODUCTION_URL : "http://localhost:8081";
+
+  return {
+    entry: "./src/index.tsx",
+    mode: isProduction ? "production" : "development",
+    devServer: {
+      port: 8080,
+      historyApiFallback: true,
+    },
+    module: {
+      rules: [
+        {
+          test: /\.tsx?$/,
+          exclude: /node_modules/,
+          use: {
+            loader: "ts-loader",
+            options: {
+              compilerOptions: { noEmit: false },
+            },
           },
         },
-      },
+      ],
+    },
+    resolve: {
+      extensions: [".ts", ".tsx", ".js"],
+    },
+    output: {
+      filename: "[name].[contenthash].js",
+      path: path.resolve(__dirname, "dist"),
+    },
+    plugins: [
+      new ModuleFederationPlugin({
+        name: "container",
+        remotes: {
+          marketing: `marketing@${baseUrl}/remoteEntry.js`,
+        },
+        shared: packageJson.dependencies,
+      }),
+      new HtmlWebpackPlugin({
+        template: "./index.html",
+      }),
     ],
-  },
-  resolve: {
-    extensions: [".ts", ".tsx", ".js"],
-  },
-  output: {
-    filename: "main.js",
-    path: path.resolve(__dirname, "dist"),
-  },
-  plugins: [
-    new ModuleFederationPlugin({
-      name: "container",
-      remotes: {
-        marketing: "marketing@http://localhost:8081/remoteEntry.js",
-      },
-      shared: {
-        react: {
-          singleton: true,
-          requiredVersion: deps.react,
-        },
-        "react-dom": {
-          singleton: true,
-          requiredVersion: deps["react-dom"],
-        },
-        "react-router-dom": {
-          singleton: true,
-          requiredVersion: deps["react-router-dom"],
-        },
-      },
-    }),
-    new HtmlWebpackPlugin({
-      template: "./index.html",
-    }),
-  ],
+  };
 };

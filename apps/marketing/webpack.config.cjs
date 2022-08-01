@@ -1,11 +1,11 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { ModuleFederationPlugin } = require("webpack").container;
-const deps = require("./package.json").dependencies;
+const packageJson = require("./package.json");
 
-module.exports = {
+module.exports = (env, argv) => ({
   entry: "./src/index.tsx",
-  mode: "development",
+  mode: argv.mode === "production" ? "production" : "development",
   devServer: {
     port: 8081,
     historyApiFallback: true,
@@ -28,7 +28,7 @@ module.exports = {
     extensions: [".ts", ".tsx", ".js"],
   },
   output: {
-    filename: "main.js",
+    filename: "[name].[contenthash].js",
     path: path.resolve(__dirname, "dist"),
   },
   plugins: [
@@ -38,23 +38,10 @@ module.exports = {
       exposes: {
         "./Marketing": "./src/bootstrap.tsx",
       },
-      shared: {
-        react: {
-          singleton: true,
-          requiredVersion: deps.react,
-        },
-        "react-dom": {
-          singleton: true,
-          requiredVersion: deps["react-dom"],
-        },
-        "react-router-dom": {
-          singleton: true,
-          requiredVersion: deps["react-router-dom"],
-        },
-      },
+      shared: packageJson.dependencies,
     }),
     new HtmlWebpackPlugin({
       template: "./index.html",
     }),
   ],
-};
+});
